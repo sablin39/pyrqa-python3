@@ -105,7 +105,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
                                                  cl.mem_flags.READ_ONLY,
                                                  time_series_x.size * time_series_x.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          time_series_x_buffer,
                                                                          time_series_x,
                                                                          device_offset=0,
@@ -119,7 +119,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
                                                  cl.mem_flags.READ_ONLY,
                                                  time_series_y.size * time_series_y.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          time_series_y_buffer,
                                                                          time_series_y,
                                                                          device_offset=0,
@@ -130,7 +130,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
 
                 # matrix = self.get_matrix(sub_matrix)
                 # matrix_buffer = cl.Buffer(context, cl.mem_flags.READ_WRITE, matrix.size * matrix.itemsize)
-                # transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue, matrix_buffer, matrix, device_offset=0, wait_for=None, is_blocking=False))
+                # transfer_to_device_events.append(cl.enqueue_copy(command_queue, matrix_buffer, matrix, device_offset=0, wait_for=None, is_blocking=False))
 
                 matrix = np.zeros(1, dtype=self.data_type)
 
@@ -138,7 +138,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
                                           cl.mem_flags.READ_WRITE,
                                           int(self.get_recurrence_matrix_size(sub_matrix, self.data_type)))
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          matrix_buffer,
                                                                          matrix,
                                                                          device_offset=0,
@@ -154,7 +154,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
                                                      cl.mem_flags.READ_WRITE,
                                                      recurrence_points.size * recurrence_points.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          recurrence_points_buffer,
                                                                          recurrence_points,
                                                                          device_offset=0,
@@ -168,7 +168,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
                                                                    cl.mem_flags.READ_WRITE,
                                                                    vertical_frequency_distribution.size * vertical_frequency_distribution.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          vertical_frequency_distribution_buffer,
                                                                          vertical_frequency_distribution,
                                                                          device_offset=0,
@@ -182,7 +182,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
                                                                          cl.mem_flags.READ_WRITE,
                                                                          white_vertical_frequency_distribution.size * white_vertical_frequency_distribution.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          white_vertical_frequency_distribution_buffer,
                                                                          white_vertical_frequency_distribution,
                                                                          device_offset=0,
@@ -196,7 +196,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
                                                                    cl.mem_flags.READ_WRITE,
                                                                    diagonal_frequency_distribution.size * diagonal_frequency_distribution.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          diagonal_frequency_distribution_buffer,
                                                                          diagonal_frequency_distribution,
                                                                          device_offset=0,
@@ -212,7 +212,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
                                                       cl.mem_flags.READ_WRITE,
                                                       vertical_carryover.size * vertical_carryover.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          vertical_carryover_buffer,
                                                                          vertical_carryover,
                                                                          device_offset=0,
@@ -228,7 +228,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
                                                             cl.mem_flags.READ_WRITE,
                                                             white_vertical_carryover.size * white_vertical_carryover.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          white_vertical_carryover_buffer,
                                                                          white_vertical_carryover,
                                                                          device_offset=0,
@@ -244,7 +244,7 @@ class ColumnMatByteRec(RQASubMatricesCarryover, AbstractRunnable):
                                                       cl.mem_flags.READ_WRITE,
                                                       diagonal_carryover.size * diagonal_carryover.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          diagonal_carryover_buffer,
                                                                          diagonal_carryover,
                                                                          device_offset=0,

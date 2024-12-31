@@ -96,7 +96,7 @@ class ColumnByte(RecurrencePlotSubMatrices, AbstractRunnable):
                                                  cl.mem_flags.READ_ONLY,
                                                  time_series_x.size * time_series_x.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          time_series_x_buffer,
                                                                          time_series_x,
                                                                          device_offset=0,
@@ -109,7 +109,7 @@ class ColumnByte(RecurrencePlotSubMatrices, AbstractRunnable):
                                                  cl.mem_flags.READ_ONLY,
                                                  time_series_y.size * time_series_y.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          time_series_y_buffer,
                                                                          time_series_y,
                                                                          device_offset=0,
@@ -124,7 +124,7 @@ class ColumnByte(RecurrencePlotSubMatrices, AbstractRunnable):
                                           cl.mem_flags.READ_WRITE,
                                           matrix.size * matrix.itemsize)
 
-                transfer_to_device_events.append(cl.enqueue_write_buffer(command_queue,
+                transfer_to_device_events.append(cl.enqueue_copy(command_queue,
                                                                          matrix_buffer,
                                                                          matrix,
                                                                          device_offset=0,
@@ -133,7 +133,7 @@ class ColumnByte(RecurrencePlotSubMatrices, AbstractRunnable):
 
                 # matrix = np.zeros(1, dtype=self.data_type)
                 # matrix_buffer = cl.Buffer(context, cl.mem_flags.READ_WRITE, int(self.get_matrix_size(sub_matrix, self.data_type)))
-                # transfer_to_device_events.append( cl.enqueue_write_buffer(command_queue, matrix_buffer, matrix, device_offset=0, wait_for=None, is_blocking=False) )
+                # transfer_to_device_events.append( cl.enqueue_copy(command_queue, matrix_buffer, matrix, device_offset=0, wait_for=None, is_blocking=False) )
 
                 # Create matrix kernel
                 create_matrix_args = [time_series_x_buffer,
