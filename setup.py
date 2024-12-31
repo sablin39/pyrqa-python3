@@ -44,7 +44,7 @@ setup(
     author_email="tobias.rawald@gfz-potsdam.de",
     keywords=["time series analysis", "recurrence quantification analysis", "RQA", "recurrence plot"],
     classifiers=[
-        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.10",
         "Development Status :: 4 - Beta",
         "Intended Audience :: Science/Research",
         "Intended Audience :: Developers",

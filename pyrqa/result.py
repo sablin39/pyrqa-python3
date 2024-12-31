@@ -9,7 +9,7 @@ Results
 
 import numpy as np
 
-from abstract_classes import AbstractSettings, AbstractRuntimes
+from .abstract_classes import AbstractSettings, AbstractRuntimes
 
 
 class RecurrencePlotResult(AbstractSettings, AbstractRuntimes):

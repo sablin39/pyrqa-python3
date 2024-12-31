@@ -12,12 +12,12 @@ import numpy as np
 import os
 import pyopencl as cl
 
-from abstract_classes import AbstractVerbose
-from exceptions import NoOpenCLPlatformDetectedException, \
+from .abstract_classes import AbstractVerbose
+from .exceptions import NoOpenCLPlatformDetectedException, \
     NoOpenCLDeviceDetectedException, \
     OpenCLPlatformIndexOutOfBoundsException, \
     OpenCLDeviceIndexOutOfBoundsException
-from file_reader import FileReader
+from .file_reader import FileReader
 
 
 class OpenCL(AbstractVerbose):
@@ -123,11 +123,11 @@ class OpenCL(AbstractVerbose):
         :rtype: String.
         """
         program_source = ''
-        for kernel_file_name, kernel_source in self.locate_kernels().iteritems():
+        for kernel_file_name, kernel_source in list(self.locate_kernels().items()):
             if kernel_source:
                 program_source += kernel_source
             else:
-                print "Kernel with file name '%s' could not be found!" % kernel_file_name
+                print(("Kernel with file name '%s' could not be found!" % kernel_file_name))
 
         return program_source
 
@@ -191,7 +191,7 @@ class OpenCL(AbstractVerbose):
             for platform_idx in np.arange(len(platforms)):
                 platform_strings.append("[%d] %s" % (platform_idx, platforms[platform_idx]))
 
-            platform_select = int(raw_input("\nAvailable platform(s):\n%s\n\nChoose platform, e.g., '0': " % "\n".join(platform_strings)))
+            platform_select = int(eval(input("\nAvailable platform(s):\n%s\n\nChoose platform, e.g., '0': " % "\n".join(platform_strings))))
 
             if platform_select not in np.arange(len(platforms)):
                 raise OpenCLPlatformIndexOutOfBoundsException("Platform index '%d' is out of bounds." % platform_select)
@@ -204,7 +204,7 @@ class OpenCL(AbstractVerbose):
                 for device_idx in np.arange(len(devices)):
                     device_strings.append("[%d] %s" % (device_idx, devices[device_idx]))
 
-                device_select = raw_input("\nAvailable device(s):\n%s\n\nChoose device(s), comma-separated, e.g., '0,1': " % "\n".join(device_strings))
+                device_select = eval(input("\nAvailable device(s):\n%s\n\nChoose device(s), comma-separated, e.g., '0,1': " % "\n".join(device_strings)))
 
                 device_indices = [int(x) for x in device_select.split(',')]
 
@@ -261,7 +261,7 @@ class OpenCL(AbstractVerbose):
         try:
             platforms = cl.get_platforms()
         except cl.RuntimeError as error:
-            print "Could not find any platform: ", error
+            print(("Could not find any platform: ", error))
 
         if platform_id is not None:
             if platform_id in np.arange(len(platforms)):

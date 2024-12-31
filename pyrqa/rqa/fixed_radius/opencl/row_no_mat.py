@@ -12,7 +12,7 @@ import os
 import pyopencl as cl
 import threading
 
-import Queue
+import queue
 
 from ....abstract_classes import AbstractRunnable
 from ....opencl import OpenCL
@@ -369,7 +369,7 @@ class RowNoMat(RQASubMatricesCarryover, AbstractRunnable):
 
                 self.threads_runtimes[device] += runtimes
 
-            except Queue.Empty:
+            except queue.Empty:
                 break
 
     def run_single_device(self):
@@ -398,7 +398,7 @@ class RowNoMat(RQASubMatricesCarryover, AbstractRunnable):
         runtimes = Runtimes()
 
         if len(self.opencl.devices) == 0:
-            print 'No device specified!'
+            print('No device specified!')
             return 0
         elif len(self.opencl.devices) == 1:
             self.run_single_device()

@@ -9,12 +9,12 @@ Recurrence analysis
 
 import abc
 import math
-import Queue
+import queue
 
 import numpy as np
 
-import processing_order as po
-from abstract_classes import AbstractSettings, \
+from . import processing_order as po
+from .abstract_classes import AbstractSettings, \
     AbstractVerbose
 
 
@@ -187,7 +187,7 @@ class SubMatrices(AbstractSettings):
                     queue_index = 0
 
                 if len(self.sub_matrix_queues) <= queue_index:
-                    self.sub_matrix_queues.append(Queue.Queue())
+                    self.sub_matrix_queues.append(queue.Queue())
 
                 self.sub_matrix_queues[queue_index].put(sub_matrix)
 

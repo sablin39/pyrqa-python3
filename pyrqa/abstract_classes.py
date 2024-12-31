@@ -21,35 +21,32 @@ class abstractclassmethod(classmethod):
         super(abstractclassmethod, self).__init__(cllble)
 
 
-class AbstractSettings(object):
+class AbstractSettings(object, metaclass=abc.ABCMeta):
     """
     Abstract settings.
 
     :ivar settings: Recurrence analysis settings.
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self, settings):
         self.settings = settings
 
 
-class AbstractRuntimes(object):
+class AbstractRuntimes(object, metaclass=abc.ABCMeta):
     """
     Abstract runtimes
 
     :ivar runtimes: Computing runtimes.
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self, runtimes):
         self.runtimes = runtimes
 
 
-class AbstractRunnable(object):
+class AbstractRunnable(object, metaclass=abc.ABCMeta):
     """
     Abstract runnable.
     """
-    __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def run(self):
@@ -65,13 +62,12 @@ class AbstractRunnable(object):
         pass
 
 
-class AbstractVerbose(object):
+class AbstractVerbose(object, metaclass=abc.ABCMeta):
     """
     Abstract verbose.
 
     :ivar verbose: Boolean value indicating the verbosity of print outs.
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self, verbose):
         self.verbose = verbose
@@ -79,14 +75,13 @@ class AbstractVerbose(object):
     def print_out(self, string):
         """ Print string if verbose is true. """
         if self.verbose:
-            print string
+            print(string)
 
 
-class AbstractMetric(object):
+class AbstractMetric(object, metaclass=abc.ABCMeta):
     """
     Abstract metric.
     """
-    __metaclass__ = abc.ABCMeta
     name = 'metric'
 
     @classmethod
@@ -126,11 +121,10 @@ class AbstractMetric(object):
         pass
 
 
-class AbstractNeighbourhood(object):
+class AbstractNeighbourhood(object, metaclass=abc.ABCMeta):
     """
     Abstract neighbourhood.
     """
-    __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def contains(self, sample):

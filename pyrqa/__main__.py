@@ -11,11 +11,11 @@ import argparse
 import numpy as np
 import os
 
-from computation import RecurrencePlotComputation, RQAComputation
-from file_reader import FileReader
-from image_generator import ImageGenerator
-from neighbourhood import FixedRadius, RadiusCorridor, FAN
-from settings import Settings
+from .computation import RecurrencePlotComputation, RQAComputation
+from .file_reader import FileReader
+from .image_generator import ImageGenerator
+from .neighbourhood import FixedRadius, RadiusCorridor, FAN
+from .settings import Settings
 
 def parse_arguments():
     """
@@ -255,5 +255,5 @@ if __name__ == "__main__":
                              output_path,
                              arguments)
     else:
-        print result
-        print result.runtimes
+        print(result)
+        print((result.runtimes))

@@ -11,10 +11,10 @@ import inspect
 import numpy as np
 import os
 
-from config_parser import ConfigurationParser
-from exceptions import NoOpenCLKernelsFoundException
-from metric import EuclideanMetric
-from neighbourhood import FixedRadius, RadiusCorridor
+from .config_parser import ConfigurationParser
+from .exceptions import NoOpenCLKernelsFoundException
+from .metric import EuclideanMetric
+from .neighbourhood import FixedRadius, RadiusCorridor
 
 
 class Settings(object):

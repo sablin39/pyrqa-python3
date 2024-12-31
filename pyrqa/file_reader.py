@@ -41,10 +41,10 @@ class FileReader(object):
                     result.append(np.float32(splitted_line[column]))
                 else:
                     line_count += 1
-                    print "No element of index %d in line '%s'." % (column, line)
+                    print(("No element of index %d in line '%s'." % (column, line)))
 
             if line_count:
-                print "%d lines could not be processed." % line_count
+                print(("%d lines could not be processed." % line_count))
 
             return np.array(result)
 
