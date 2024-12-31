@@ -101,8 +101,11 @@ or create a new computation object, e.g.,::
 Environment
 -----------
 
-PyRQA has been tested under Python 2.7 on Mac OS X (Mavericks, Yosemite) as well as openSUSE (12.2, 13.2).
+This library has been tested under Python 3.10 on Ubuntu 22.04 x86_64 with kernel version 5.15.0-126-generic. 
 
+Benchmark
+-----------
+It takes approximately 120 seconds to run all tests on single Nvidia RTX3090 with driver verion 555.42.06.
 
 Contribution
 ------------
