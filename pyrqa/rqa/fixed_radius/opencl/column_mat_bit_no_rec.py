@@ -364,51 +364,51 @@ class ColumnMatBitNoRec(RQASubMatricesCarryover, AbstractRunnable):
                 command_queue.finish()
 
                 # Read buffer
-                transfer_from_device_events.append(cl.enqueue_read_buffer(command_queue,
-                                                                          recurrence_points_buffer,
+                transfer_from_device_events.append(cl.enqueue_copy(command_queue,
                                                                           self.recurrence_points[recurrence_points_start:recurrence_points_end],
+                                                                          recurrence_points_buffer,
                                                                           device_offset=0,
                                                                           wait_for=None,
                                                                           is_blocking=False))
 
-                transfer_from_device_events.append(cl.enqueue_read_buffer(command_queue,
-                                                                          vertical_frequency_distribution_buffer,
+                transfer_from_device_events.append(cl.enqueue_copy(command_queue,
                                                                           vertical_frequency_distribution,
+                                                                          vertical_frequency_distribution_buffer,
                                                                           device_offset=0,
                                                                           wait_for=None,
                                                                           is_blocking=False))
 
-                transfer_from_device_events.append(cl.enqueue_read_buffer(command_queue,
-                                                                          vertical_carryover_buffer,
+                transfer_from_device_events.append(cl.enqueue_copy(command_queue,
                                                                           self.vertical_length_carryover[vertical_carryover_start:vertical_carryover_end],
+                                                                          vertical_carryover_buffer,
                                                                           device_offset=0,
                                                                           wait_for=None,
                                                                           is_blocking=False))
 
-                transfer_from_device_events.append(cl.enqueue_read_buffer(command_queue,
-                                                                          white_vertical_frequency_distribution_buffer,
+                transfer_from_device_events.append(cl.enqueue_copy(command_queue,
                                                                           white_vertical_frequency_distribution,
+                                                                          white_vertical_frequency_distribution_buffer,
                                                                           device_offset=0,
                                                                           wait_for=None,
                                                                           is_blocking=False))
 
-                transfer_from_device_events.append(cl.enqueue_read_buffer(command_queue,
-                                                                          white_vertical_carryover_buffer,
+                transfer_from_device_events.append(cl.enqueue_copy(command_queue,
                                                                           self.white_vertical_length_carryover[white_vertical_carryover_start:white_vertical_carryover_end],
+                                                                          white_vertical_carryover_buffer,
                                                                           device_offset=0,
                                                                           wait_for=None,
                                                                           is_blocking=False))
 
-                transfer_from_device_events.append(cl.enqueue_read_buffer(command_queue,
-                                                                          diagonal_frequency_distribution_buffer,
+                transfer_from_device_events.append(cl.enqueue_copy(command_queue,
                                                                           diagonal_frequency_distribution,
+                                                                          diagonal_frequency_distribution_buffer,
                                                                           device_offset=0,
                                                                           wait_for=None,
                                                                           is_blocking=False))
 
-                transfer_from_device_events.append(cl.enqueue_read_buffer(command_queue,
-                                                                          diagonal_carryover_buffer,
+                transfer_from_device_events.append(cl.enqueue_copy(command_queue,
                                                                           self.diagonal_length_carryover[diagonal_carryover_start:diagonal_carryover_end],
+                                                                          diagonal_carryover_buffer,
                                                                           device_offset=0,
                                                                           wait_for=None,
                                                                           is_blocking=False))

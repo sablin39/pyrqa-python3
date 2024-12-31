@@ -158,9 +158,9 @@ class ColumnByte(RecurrencePlotSubMatrices, AbstractRunnable):
                 command_queue.finish()
 
                 # Read buffer
-                transfer_from_device_events.append(cl.enqueue_read_buffer(command_queue,
-                                                                          matrix_buffer,
+                transfer_from_device_events.append(cl.enqueue_copy(command_queue,
                                                                           matrix,
+                                                                          matrix_buffer,
                                                                           device_offset=0,
                                                                           wait_for=None,
                                                                           is_blocking=False))
